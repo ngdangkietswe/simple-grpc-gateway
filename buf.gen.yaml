@@ -1,0 +1,24 @@
+version: v1
+plugins:
+  - plugin: buf.build/protocolbuffers/go
+    out: generated
+    opt: paths=source_relative
+  - plugin: buf.build/grpc-ecosystem/gateway
+    out: generated
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/grpc/go
+    out: generated
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/bufbuild/validate-go
+    out: generated
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/grpc-ecosystem/openapiv2
+    out: openapiv2
+    opt:
+      - json_names_for_fields=false
+      - ignore_comments=true
+      - allow_merge=true
+      - enums_as_ints=true
